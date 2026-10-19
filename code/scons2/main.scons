@@ -1,0 +1,5 @@
+# Set build environment
+env = Environment()
+
+# Build executable
+env.Program(target='myprog', source=['main.cpp', 'lib.cpp'])

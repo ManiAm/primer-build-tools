@@ -1,0 +1,12 @@
+# Use the option in the build
+env = Environment()
+
+# Build executable
+env.Program(target='myprog', source=['main.cpp', 'lib.cpp'])
+
+# Create an alias for building everything
+env.Alias('all', ['myprog'])
+
+# Create an alias for cleaning up
+env.Alias('clean', None, action='rm -rf myprog main.o lib.o')
+AlwaysBuild('clean')              # Ensure it runs every time 'clean' is invoked

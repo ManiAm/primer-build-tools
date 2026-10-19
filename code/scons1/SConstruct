@@ -1,0 +1,21 @@
+import os
+
+# Set the build directory
+build_dir = 'build'
+
+# Create the build directory if it doesn't exist
+if not os.path.exists(build_dir):
+    os.makedirs(build_dir)
+
+# Define the source files
+source_files = ['lib.cpp', 'main.cpp']
+
+# Define the object files
+object_files = [os.path.join(build_dir, os.path.splitext(f)[0] + '.o') for f in source_files]
+
+# Define the executable name
+executable = os.path.join(build_dir, 'myprog')
+
+# Build the objects
+env = Environment()
+env.Program(target=executable, source=source_files)

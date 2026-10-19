@@ -1,0 +1,7 @@
+env = Environment()
+
+# Use pkg-config to locate OpenSSL
+env.ParseConfig('pkg-config --cflags --libs openssl')
+
+# Compile and link with OpenSSL
+env.Program(target='myprog', source='main.cpp')

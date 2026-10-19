@@ -1,0 +1,15 @@
+strict digraph  {
+"<ROOT>";
+"Makefile";
+"myprog";
+"lib.o";
+"lib.cpp";
+"main.o";
+"main.cpp";
+"<ROOT>" -> "Makefile";
+"<ROOT>" -> "myprog";
+"myprog" -> "lib.o";
+"myprog" -> "main.o";
+"lib.o" -> "lib.cpp";
+"main.o" -> "main.cpp";
+}

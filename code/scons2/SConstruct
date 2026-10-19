@@ -1,0 +1,6 @@
+import os
+
+# Set the build directory
+build_dir = "build/out"
+
+SConscript("main.scons", variant_dir=build_dir, duplicate=0)

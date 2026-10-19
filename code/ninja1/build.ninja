@@ -1,0 +1,20 @@
+# Define the compiler and flags
+cxx = g++
+cxxflags = -std=c++17 -Wall -Wextra -g
+ldflags = 
+
+# Rules
+rule compile
+  command = $cxx $cxxflags -c $in -o $out
+
+rule link
+  command = $cxx $in -o $out $ldflags
+
+# Build steps
+build lib.o: compile lib.cpp
+build main.o: compile main.cpp
+
+build myprog: link lib.o main.o
+
+# Default target
+default myprog

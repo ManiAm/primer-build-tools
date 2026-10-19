@@ -1,0 +1,16 @@
+# Add a custom command-line option
+AddOption('--enable-debug',
+          dest='debug',
+          action='store_true',
+          default=False,
+          help='Enable debug mode.')
+
+# Use the option in the build
+env = Environment()
+
+# Retrieve the option value
+if GetOption('debug'):
+    env.Append(CCFLAGS=['-g'])  # Enable debugging flags
+
+# Build executable
+env.Program(target='myprog', source=['main.cpp', 'lib.cpp'])
