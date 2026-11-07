@@ -1,6 +1,6 @@
 # Meson
 
-Meson is a modern, open-source build system designed to be fast, user-friendly, and portable across Linux, Windows, and macOS. It uses **Ninja** ([ch25](25_ninja.md)) as its default backend for fast incremental builds. The developer describes *what* to build in a `meson.build` file; Meson generates the low-level build files and Ninja executes them.
+Meson is a modern, open-source build system designed to be fast, user-friendly, and portable across Linux, Windows, and macOS. It uses **Ninja** ([ch26](26_ninja.md)) as its default backend for fast incremental builds. The developer describes *what* to build in a `meson.build` file; Meson generates the low-level build files and Ninja executes them.
 
 Meson was created by Jussi Pakkanen in 2013. The name is inspired by particle physics — mesons are subatomic particles, reflecting the project's goal of being small and fast. Notable projects that use Meson include:
 
@@ -13,7 +13,7 @@ Meson was created by Jussi Pakkanen in 2013. The name is inspired by particle ph
 
 ## Meson vs CMake
 
-Both Meson and CMake ([ch22](22_cmake.md)) are build system generators that produce Ninja or Make files. The key differences:
+Both Meson and CMake ([ch23](23_cmake.md)) are build system generators that produce Ninja or Make files. The key differences:
 
 | Aspect             | CMake                                   | Meson                                       |
 | ------------------ | --------------------------------------- | ------------------------------------------- |
@@ -188,4 +188,4 @@ $ brew install openssl             # macOS
 
 ---
 
-← Previous: [Ninja](25_ninja.md) · Next: [Bazel](27_bazel.md) →
+← Previous: [Ninja](26_ninja.md) · Next: [Bazel](28_bazel.md) →

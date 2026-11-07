@@ -16,7 +16,7 @@ Bazel was originally developed internally at Google as **Blaze** and open-source
 
 ## Bazel vs CMake
 
-Both Bazel and CMake ([ch22](22_cmake.md)) build C/C++ projects, but they take very different approaches:
+Both Bazel and CMake ([ch23](23_cmake.md)) build C/C++ projects, but they take very different approaches:
 
 | Aspect             | CMake                                    | Bazel                                      |
 | ------------------ | ---------------------------------------- | ------------------------------------------ |
@@ -292,4 +292,4 @@ For large projects, this can reduce build times dramatically. The cache is safe 
 
 ---
 
-← Previous: [Meson](26_meson.md)
+← Previous: [Meson](27_meson.md)

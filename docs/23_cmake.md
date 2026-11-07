@@ -14,7 +14,7 @@ The name stands for "cross-platform make." CMake was first released in 2000 by K
 
 ## CMake vs Autotools
 
-Both CMake and Autotools ([ch21](21_autotools.md)) solve the same problem — portable builds across platforms. The key differences:
+Both CMake and Autotools ([ch22](22_autotools.md)) solve the same problem — portable builds across platforms. The key differences:
 
 | Aspect           | Autotools                          | CMake                                       |
 | ---------------- | ---------------------------------- | ------------------------------------------- |
@@ -341,6 +341,31 @@ The generated file contains one entry per source file:
 ]
 ```
 
+## Build Caching (`ccache`)
+
+CMake has built-in support for compiler caching via **compiler launchers** (see [ch21](21_build_caching.md) for background on build caching). Add this to your `CMakeLists.txt`:
+
+```cmake
+find_program(CCACHE_PROGRAM ccache)
+if(CCACHE_PROGRAM)
+    set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE_PROGRAM})
+    set(CMAKE_C_COMPILER_LAUNCHER ${CCACHE_PROGRAM})
+endif()
+```
+
+Or pass it on the command line:
+
+```
+$ cmake -S . -B build -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+$ cmake --build build
+```
+
+CMake will run all compilations through ccache. The same approach works with sccache:
+
+```
+$ cmake -S . -B build -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
+```
+
 ## Help Target
 
 When using Unix Makefiles or Ninja, CMake generates a `help` target that lists all available build targets:
@@ -357,4 +382,4 @@ The following are some of the valid targets for this Makefile:
 
 ---
 
-← Previous: [Autotools](21_autotools.md) · Next: [SCons](23_scons.md) →
+← Previous: [Autotools](22_autotools.md) · Next: [SCons](24_scons.md) →

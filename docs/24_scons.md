@@ -220,8 +220,8 @@ SCons trades some capabilities for simplicity:
 - **Smaller community** — fewer tutorials, examples, and online resources compared to CMake.
 - **Speed** — for very large projects, SCons' Python-based execution and MD5 scanning can be slower than Make or Ninja.
 
-For most new cross-platform projects, CMake ([ch22](22_cmake.md)) is the more common choice. SCons is well-suited for Python-heavy workflows and projects that benefit from its content-based change detection.
+For most new cross-platform projects, CMake ([ch23](23_cmake.md)) is the more common choice. SCons is well-suited for Python-heavy workflows and projects that benefit from its content-based change detection.
 
 ---
 
-← Previous: [CMake](22_cmake.md) · Next: [BitBake](24_bitbake.md) →
+← Previous: [CMake](23_cmake.md) · Next: [BitBake](25_bitbake.md) →

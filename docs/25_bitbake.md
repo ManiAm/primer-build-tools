@@ -368,4 +368,4 @@ $ bitbake example
 
 ---
 
-← Previous: [SCons](23_scons.md) · Next: [Ninja](25_ninja.md) →
+← Previous: [SCons](24_scons.md) · Next: [Ninja](26_ninja.md) →

@@ -56,14 +56,20 @@ The Make chapters follow a **progressive approach**: we start with a minimal one
 | 19 | [Dry Run / Debugging](docs/19_debugging_make.md)                          | `make -n`, `make -d`, and troubleshooting             |
 | 20 | [Platform Dependency](docs/20_make_platform_dependency.md)                | Handling OS and compiler differences                  |
 
+## Build Caching
+
+| #  | Topic                                                                     | Description                                           |
+| -- | ------------------------------------------------------------------------- | ----------------------------------------------------- |
+| 21 | [Build Caching](docs/21_build_caching.md)                                 | Compiler caching with `ccache` and alternatives       |
+
 ## Other Build Systems
 
 | #  | Topic                                                                     | Description                                           |
 | -- | ------------------------------------------------------------------------- | ----------------------------------------------------- |
-| 21 | [Autotools](docs/21_autotools.md)                                         | `autoconf`, `automake`, and the configure workflow    |
-| 22 | [CMake](docs/22_cmake.md)                                                 | Cross-platform build system generator                 |
-| 23 | [SCons](docs/23_scons.md)                                                 | Python-based build tool with SConstruct files         |
-| 24 | [BitBake](docs/24_bitbake.md)                                             | Task executor for Yocto/OpenEmbedded builds           |
-| 25 | [Ninja](docs/25_ninja.md)                                                 | Fast, low-level build system                          |
-| 26 | [Meson](docs/26_meson.md)                                                 | Modern build system using Ninja as backend            |
-| 27 | [Bazel](docs/27_bazel.md)                                                 | Google's scalable, reproducible build system          |
+| 22 | [Autotools](docs/22_autotools.md)                                         | `autoconf`, `automake`, and the configure workflow    |
+| 23 | [CMake](docs/23_cmake.md)                                                 | Cross-platform build system generator                 |
+| 24 | [SCons](docs/24_scons.md)                                                 | Python-based build tool with SConstruct files         |
+| 25 | [BitBake](docs/25_bitbake.md)                                             | Task executor for Yocto/OpenEmbedded builds           |
+| 26 | [Ninja](docs/26_ninja.md)                                                 | Fast, low-level build system                          |
+| 27 | [Meson](docs/27_meson.md)                                                 | Modern build system using Ninja as backend            |
+| 28 | [Bazel](docs/28_bazel.md)                                                 | Google's scalable, reproducible build system          |

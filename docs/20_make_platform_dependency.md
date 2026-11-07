@@ -131,8 +131,8 @@ OS detection in Make works for simple projects, but it has limits:
 
 - **Feature detection** — some projects need to test whether a library is installed, whether the compiler supports a specific flag, or which version of a tool is available. Make has no built-in way to do this.
 
-These limitations are exactly why tools like **Autotools** ([ch21](21_autotools.md)), **CMake** ([ch22](22_cmake.md)), and **Meson** ([ch26](26_meson.md)) were created. They automate feature detection and generate platform-correct build files for you.
+These limitations are exactly why tools like **Autotools** ([ch22](22_autotools.md)), **CMake** ([ch23](23_cmake.md)), and **Meson** ([ch27](27_meson.md)) were created. They automate feature detection and generate platform-correct build files for you.
 
 ---
 
-← Previous: [Dry Run / Debugging](19_debugging_make.md) · Next: [Autotools](21_autotools.md) →
+← Previous: [Dry Run / Debugging](19_debugging_make.md) · Next: [Build Caching](21_build_caching.md) →

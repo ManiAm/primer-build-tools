@@ -186,8 +186,8 @@ Autotools is powerful but has well-known drawbacks:
 - **Slow configure step** — the generated `configure` script runs hundreds of shell checks sequentially, which can take minutes on large projects.
 - **Cryptic errors** — when something goes wrong in `configure.ac`, error messages often point to generated code, not the source.
 
-For new projects, **CMake** ([ch22](22_cmake.md)) and **Meson** ([ch26](26_meson.md)) are more common choices. However, understanding Autotools is valuable — many existing projects use it, and the `./configure && make && make install` workflow isn't going away.
+For new projects, **CMake** ([ch23](23_cmake.md)) and **Meson** ([ch27](27_meson.md)) are more common choices. However, understanding Autotools is valuable — many existing projects use it, and the `./configure && make && make install` workflow isn't going away.
 
 ---
 
-← Previous: [Platform Dependency](20_make_platform_dependency.md) · Next: [CMake](22_cmake.md) →
+← Previous: [Build Caching](21_build_caching.md) · Next: [CMake](23_cmake.md) →
