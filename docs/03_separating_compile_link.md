@@ -42,7 +42,27 @@ The Makefile now contains three rules:
 - **`main.o`** depends on `main.cpp`. The recipe compiles it into an object file.
 - **`lib.o`** depends on `lib.cpp`. The recipe compiles it into an object file.
 
+The order of rules in the file does not affect the build — `make` parses the entire file first, then uses the **dependency graph** to determine execution order. However, `make` uses the **first rule** as the default target when invoked with no arguments. By convention, the final executable (`myprog`) is placed first so that running `make` alone builds the right thing.
+
 ### How `make` Processes These Rules
+
+`make` parses the entire Makefile and builds a **dependency graph** before executing anything.
+
+```mermaid
+graph TD
+    myprog["myprog (executable)"]
+    main_o["main.o (object file)"]
+    lib_o["lib.o (object file)"]
+    main_cpp["main.cpp (source)"]
+    lib_cpp["lib.cpp (source)"]
+
+    myprog --> main_o
+    myprog --> lib_o
+    main_o --> main_cpp
+    lib_o --> lib_cpp
+```
+
+Compared to the single-rule graph in [ch02](02_gnu_make.md#two-phases), there is now an intermediate layer — the `.o` object files sit between the executable and the source files. This is what enables incremental rebuilds: `make` can recompile only the `.o` files whose sources changed, then re-link.
 
 When you run `make` for the first time:
 
@@ -51,7 +71,7 @@ When you run `make` for the first time:
     g++ -c lib.cpp -o lib.o
     g++ main.o lib.o -o myprog
 
-`make` starts with the first target, `myprog`, and checks its prerequisites (`main.o` and `lib.o`). Since neither object file exists yet, `make` evaluates their rules first — compiling each source file. Once both object files are ready, `make` returns to the `myprog` rule and links them into the executable.
+`make` starts at `myprog`, sees that `main.o` and `lib.o` don't exist yet, builds them first (bottom up), then links them into the executable.
 
 ### Incremental Rebuilds
 

@@ -1,10 +1,20 @@
 # Build Tools Primer
 
-A comprehensive reference on build automation tools — from GNU Make fundamentals through CMake, SCons, Meson, Ninja, Bazel, and more.
+## About This Primer
 
-Since the 1970s, dozens of build tools have been developed to automate the process of compiling, linking, and packaging software. Each was created to address the limitations of its predecessors — Make (1976) replaced manual shell scripts, Autotools (1991) added portability, CMake (2000) added cross-platform generation, and modern tools like Meson (2013) and Bazel (2015) push further on speed, reproducibility, and multi-language support.
+### The Build Tools Landscape
 
-This primer dedicates the most coverage to **GNU Make** because the core concepts it introduces — targets, prerequisites, dependency graphs, incremental rebuilds, pattern rules, and parallel execution — are the foundation that every other build tool builds upon. CMake generates Makefiles. Meson and CMake both use Ninja, which shares Make's target-and-dependency model. Bazel extends the same ideas with hermeticity and remote caching. Understanding Make means you can pick up any of these tools faster, because the underlying principles are the same.
+Since the 1970s, dozens of build tools have been developed to automate the process of compiling, linking, and packaging software. Many are **language-specific** — Maven and Gradle for Java, Cargo for Rust, Go's built-in `go build`, and npm/webpack for JavaScript — tightly integrated with their language's ecosystem and package registry.
+
+The tools covered in this primer **originated in the C/C++ and Unix ecosystem**, where building involves separate compile, link, and packaging steps. Many have since evolved to support multiple languages, but their core design remains tied to that compiled-language workflow. Each addressed the limitations of its predecessors — Make (1976) replaced manual shell scripts, Autotools (1991) added portability, CMake (2000) added cross-platform generation, and Meson (2013) and Bazel (2015) pushed further on speed and reproducibility. This primer uses C/C++ examples throughout.
+
+### Why Start with Make
+
+The primer dedicates the most coverage to **GNU Make** because its core concepts — targets, prerequisites, dependency graphs, incremental rebuilds, and parallel execution — are the foundation every other tool builds upon. CMake generates Makefiles. Meson and CMake use Ninja, which shares Make's target-and-dependency model. Bazel extends the same ideas with hermeticity and remote caching. Understanding Make deeply means picking up any of these tools is faster.
+
+### How This Primer Is Structured
+
+The Make chapters follow a **progressive approach**: we start with a minimal one-rule Makefile and improve it step by step — separating compilation and linking, adding variables, automating header dependencies, organizing project structure, and enabling parallel builds. Each chapter introduces one concept and immediately applies it, so the Makefile evolves alongside your understanding.
 
 ## Introduction
 

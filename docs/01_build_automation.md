@@ -74,13 +74,13 @@ With so many options, picking the right build tool can be confusing. The guide b
 
 - **SCons** — Use when your team prefers Python and wants build files to be plain Python scripts. SCons provides automatic dependency scanning and a single language for both build logic and application code. Its main drawback is slower build performance on very large projects due to Python overhead.
 
-- **BitBake** — Use exclusively for building embedded Linux images with the Yocto Project or OpenEmbedded. If you are assembling a complete Linux distribution for an embedded device — including kernel, root filesystem, packages, and BSP layers — BitBake is the purpose-built tool for that workflow. It is not a general-purpose build system.
+- **BitBake** — Use exclusively for building **embedded Linux images** with the Yocto Project or OpenEmbedded. If you are assembling a complete Linux distribution for an embedded device — including kernel, root filesystem, packages, and BSP layers — BitBake is the purpose-built tool for that workflow. It is not a general-purpose build system.
 
-- **Ninja** — Do not use directly. Ninja is a build executor, not a build system you configure by hand. Instead, use CMake (`cmake -G Ninja`) or Meson (which defaults to Ninja) to generate `build.ninja` files. Ninja then executes builds with minimal overhead, making it the fastest option for the edit-compile-test cycle.
+- **Ninja** — **Do not use directly**. Ninja is a build executor, not a build system you configure by hand. Instead, use CMake (`cmake -G Ninja`) or Meson (which defaults to Ninja) to generate `build.ninja` files. Ninja then executes builds with minimal overhead, making it the fastest option for the edit-compile-test cycle.
 
 - **Meson** — Use for modern C/C++ projects where ease of use is a priority. Meson has a clean, minimal syntax, automatic dependency management, and defaults to Ninja for fast builds. It is an excellent choice for new Linux-focused projects and is increasingly adopted by major open-source projects (systemd, GNOME, Mesa). Its ecosystem is smaller than CMake's, but growing.
 
-- **Bazel** — Use for large-scale monorepos spanning multiple languages (C++, Java, Python, Go). Bazel provides hermetic builds (fully reproducible), remote caching, remote execution, and fine-grained incremental rebuilds. The trade-off is a steeper learning curve and a more opinionated project structure. Best justified when your codebase has millions of lines and multiple teams contributing.
+- **Bazel** — Use for **large-scale monorepos** spanning multiple languages (C++, Java, Python, Go). Bazel provides hermetic builds (fully reproducible), remote caching, remote execution, and fine-grained incremental rebuilds. The trade-off is a steeper learning curve and a more opinionated project structure. Best justified when your codebase has millions of lines and multiple teams contributing.
 
 ## Further Reading
 

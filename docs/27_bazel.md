@@ -1,6 +1,10 @@
 # Bazel
 
-Bazel is a fast, scalable build system designed for large, multi-language codebases. It emphasizes **reproducible, hermetic builds** — the same source code always produces the same output, regardless of the machine. The developer describes *what* to build in `BUILD` files using a Python-like language called **Starlark**; Bazel figures out *how*.
+Bazel is a fast, scalable build system designed for large, multi-language **monorepos** — single repositories that contain the code for many projects, services, and libraries in one place. Companies like Google (~2 billion lines of code in one repo), Meta, and Microsoft use this approach at massive scale. Bazel was built to handle that scale efficiently.
+
+<img src="../pics/bazel-monorepo.png" alt="segment" width="500">
+
+Bazel emphasizes **reproducible, hermetic builds** — the same source code always produces the same output, regardless of the machine. The developer describes *what* to build in `BUILD` files using a Python-like language called **Starlark**; Bazel figures out *how*.
 
 Bazel was originally developed internally at Google as **Blaze** and open-sourced in 2015. The name "Bazel" is an anagram of "Blaze." Notable projects that use Bazel include:
 

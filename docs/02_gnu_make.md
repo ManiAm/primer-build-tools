@@ -134,73 +134,25 @@ In the example above, `make` compares the `mtime` of `myprog` against `main.cpp`
 
 Unlike C/C++ or Python — where statements run sequentially from top to bottom — `make` is **declarative and dependency-driven**. You describe *what* depends on *what*, and `make` determines the order of execution automatically.
 
-### Two Phases
-
 `make` processes a Makefile in two phases:
 
 1. **Parsing** — `make` reads the entire Makefile and builds an internal **dependency graph** — a map of which targets depend on which prerequisites. No recipes are executed yet.
 
 2. **Execution** — `make` walks the dependency graph, starting from the requested target and working backward through its prerequisites. It builds targets in the order dictated by the graph, not by the order the rules appear in the file.
 
-For example, given three rules where `myprog` depends on `main.o` and `lib.o`, and each `.o` file depends on its `.cpp` source, `make` builds the following dependency graph:
+With our single-rule Makefile, the dependency graph is straightforward:
 
 ```mermaid
 graph TD
     myprog["myprog (executable)"]
-    main_o["main.o (object file)"]
-    lib_o["lib.o (object file)"]
     main_cpp["main.cpp (source)"]
     lib_cpp["lib.cpp (source)"]
 
-    myprog --> main_o
-    myprog --> lib_o
-    main_o --> main_cpp
-    lib_o --> lib_cpp
+    myprog --> main_cpp
+    myprog --> lib_cpp
 ```
 
-`make` starts at the top (`myprog`) and works downward. It sees that `main.o` and `lib.o` must be built first, and each of those requires its respective `.cpp` file. The source files are leaves — they have no prerequisites, so `make` starts building from the bottom up.
-
-### Rule Order Does Not Matter
-
-Because `make` parses the entire file before executing anything, the order of rules in the Makefile is irrelevant (with one exception: the **first target** is the default when you run `make` with no arguments).
-
-For example, these two Makefiles produce identical results:
-
-**Makefile A** — rules in "natural" order:
-
-```makefile
-myprog: main.o lib.o
-	g++ main.o lib.o -o myprog
-
-main.o: main.cpp
-	g++ -c main.cpp -o main.o
-
-lib.o: lib.cpp
-	g++ -c lib.cpp -o lib.o
-```
-
-**Makefile B** — rules in reversed order:
-
-```makefile
-lib.o: lib.cpp
-	g++ -c lib.cpp -o lib.o
-
-main.o: main.cpp
-	g++ -c main.cpp -o main.o
-
-myprog: main.o lib.o
-	g++ main.o lib.o -o myprog
-```
-
-In both cases, `make` builds `main.o` and `lib.o` before `myprog`, because the dependency graph requires it.
-
-### Execution Scope
-
-| Scope                      | How it runs                                                 |
-|----------------------------|-------------------------------------------------------------|
-| **Across targets**         | Order determined by the dependency graph, not file position |
-| **Within a single recipe** | Lines run sequentially, one after another (each in its own shell) |
-| **Independent targets**    | Sequential by default; can run in parallel with `make -j` (covered in [Parallel Make](17_parallel_build.md)) |
+`myprog` depends on `main.cpp` and `lib.cpp`. Both are source files with no prerequisites of their own — they are the leaves of the graph. If either is newer than `myprog`, the recipe runs.
 
 ## Recipe Prefix
 
