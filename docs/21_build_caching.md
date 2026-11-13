@@ -54,7 +54,7 @@ Because the cache uses content hashes, it works across `make clean`, branch swit
 
 **Changes propagate through dependencies automatically.** If you modify `lib.h`, every source file that includes it produces a different hash — so all affected object files get a cache miss and are recompiled. Files that don't include `lib.h` still get cache hits. This is the same correctness guarantee Make provides through timestamp checking, but it survives `make clean` and branch switches.
 
-## Caching Tools
+## Compiler-Level Caching Tools
 
 Several tools provide compiler-level caching for C/C++ projects:
 
@@ -249,13 +249,23 @@ $ export SCCACHE_REGION=us-east-1
 $ make CXX="sccache g++"
 ```
 
+sccache talks to any **S3-compatible** storage, not just AWS. Self-hosted servers like **MinIO** work the same way — just point `SCCACHE_ENDPOINT` at your MinIO instance:
+
+```
+$ export SCCACHE_BUCKET=build-cache
+$ export SCCACHE_ENDPOINT=http://minio.internal:9000
+$ export SCCACHE_REGION=auto
+```
+
+For teams already using **JFrog Artifactory**, sccache can store cached objects via Artifactory's WebDAV interface (`SCCACHE_WEBDAV_ENDPOINT`), and ccache 4.13+ supports remote storage over HTTP (`CCACHE_REMOTE_STORAGE`). In both cases, the caching tool handles all the hash-based logic — the storage server simply stores and serves the cached object files.
+
 ### When Build Caching Helps Most
 
-| Scenario | Without ccache | With ccache |
-|---|---|---|
-| `make clean && make` | Full recompile | Instant (cache hit) |
-| Switch branches and build | Partial or full recompile | Instant for unchanged files |
-| CI pipeline (warm cache) | Full recompile every run | Only recompile changed files |
+| Scenario                           | Without ccache             | With ccache |
+|------------------------------------|----------------------------|---|
+| `make clean && make`               | Full recompile             | Instant (cache hit) |
+| Switch branches and build          | Partial or full recompile  | Instant for unchanged files |
+| CI pipeline (warm cache)           | Full recompile every run   | Only recompile changed files |
 | Multiple developers (shared cache) | Each rebuilds from scratch | Shared cache across the team |
 
 Build caching is most valuable on **large projects** where full recompilation takes hours. For small projects with a few files, the benefit is minimal.
